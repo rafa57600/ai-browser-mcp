@@ -1,0 +1,46 @@
+{
+  "server": {
+    "port": 8080,
+    "host": "0.0.0.0",
+    "timeout": 30000,
+    "maxConnections": 200
+  },
+  "browser": {
+    "headless": true,
+    "slowMo": 0,
+    "timeout": 30000,
+    "maxSessions": 20,
+    "sessionTimeout": 1800000,
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "security": {
+    "allowedDomains": [],
+    "rateLimit": {
+      "requests": 60,
+      "window": 60000
+    },
+    "enableDomainValidation": true
+  },
+  "logging": {
+    "level": "info",
+    "file": "/var/log/mcp-browser/production.log",
+    "maxSize": "50m",
+    "maxFiles": 10,
+    "enableConsole": false
+  },
+  "monitoring": {
+    "enableHealthCheck": true,
+    "healthCheckPath": "/health",
+    "metricsPath": "/metrics",
+    "enableMetrics": true
+  },
+  "performance": {
+    "memoryLimit": 4096,
+    "cpuThrottleRate": 0.8,
+    "diskSpaceLimit": 2048,
+    "enableContextPooling": true
+  }
+}

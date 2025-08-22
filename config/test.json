@@ -1,0 +1,45 @@
+{
+  "server": {
+    "port": 0,
+    "host": "localhost",
+    "timeout": 5000,
+    "maxConnections": 10
+  },
+  "browser": {
+    "headless": true,
+    "slowMo": 0,
+    "timeout": 5000,
+    "maxSessions": 3,
+    "sessionTimeout": 300000,
+    "viewport": {
+      "width": 800,
+      "height": 600
+    }
+  },
+  "security": {
+    "allowedDomains": ["localhost", "127.0.0.1", "example.com", "test.local"],
+    "rateLimit": {
+      "requests": 1000,
+      "window": 60000
+    },
+    "enableDomainValidation": false
+  },
+  "logging": {
+    "level": "error",
+    "maxSize": "1m",
+    "maxFiles": 1,
+    "enableConsole": false
+  },
+  "monitoring": {
+    "enableHealthCheck": false,
+    "healthCheckPath": "/health",
+    "metricsPath": "/metrics",
+    "enableMetrics": false
+  },
+  "performance": {
+    "memoryLimit": 512,
+    "cpuThrottleRate": 1,
+    "diskSpaceLimit": 256,
+    "enableContextPooling": false
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "name": "ai-browser-mcp",
+  "version": "1.0.0",
+  "description": "Browser automation system that exposes browser control capabilities through the Model Context Protocol (MCP)",
+  "main": "dist/simple-mcp-server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.simple.json",
+    "dev": "tsx src/simple-mcp-server.ts",
+    "start": "node dist/simple-mcp-server.js",
+    "start:ws": "node dist/cli/websocket-server.js",
+    "dev:ws": "tsx src/cli/websocket-server.ts",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --coverage",
+    "test:unit": "vitest --run \"tests/unit/**/*.test.ts\"",
+    "test:integration": "vitest --run \"tests/integration/**/*.test.ts\"",
+    "test:e2e": "vitest --run \"tests/e2e/**/*.test.ts\"",
+    "test:performance": "vitest --run \"tests/performance/**/*.test.ts\"",
+    "test:load": "vitest --run \"tests/load/**/*.test.ts\"",
+    "test:security": "vitest --run \"tests/security/**/*.test.ts\"",
+    "test:comprehensive": "tsx tests/test-runner.ts",
+    "test:comprehensive:coverage": "tsx tests/test-runner.ts --coverage",
+    "test:comprehensive:parallel": "tsx tests/test-runner.ts --parallel",
+    "test:critical": "tsx tests/test-runner.ts --skip-non-critical",
+    "lint": "eslint src/simple-mcp-server.ts",
+    "lint:fix": "eslint src/simple-mcp-server.ts --fix",
+    "clean": "rimraf dist",
+    "install:easy": "node install.js",
+    "setup": "npm install && npx playwright install chromium && npm run build",
+    "verify": "node verify-setup.js",
+    "health": "node -e \"console.log('AI Browser MCP Server - Health Check OK')\"",
+    "prepare-github": "node scripts/prepare-github.js",
+    "postinstall": "echo 'Run npm run setup to complete installation, then npm run verify to check everything works'"
+  },
+  "keywords": [
+    "mcp",
+    "browser",
+    "automation",
+    "playwright",
+    "chromium"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rafa57600/ai-browser-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rafa57600/ai-browser-mcp/issues"
+  },
+  "homepage": "https://github.com/rafa57600/ai-browser-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.3",
+    "commander": "^12.0.0",
+    "playwright": "^1.55.0",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "ws": "^8.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/ws": "^8.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.40.0",
+    "@typescript-eslint/parser": "^8.40.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.33.0",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

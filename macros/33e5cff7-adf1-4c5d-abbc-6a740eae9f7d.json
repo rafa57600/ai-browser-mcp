@@ -1,0 +1,32 @@
+{
+  "id": "33e5cff7-adf1-4c5d-abbc-6a740eae9f7d",
+  "name": "Test Interaction Macro",
+  "sessionId": "session_1_1755826140046",
+  "startTime": "2025-08-22T01:29:00.121Z",
+  "actions": [
+    {
+      "type": "type",
+      "selector": "#test-input",
+      "text": "Hello, World!",
+      "id": "0c2b17d1-cd3b-4e69-ac14-2c4e754e07ea",
+      "timestamp": "2025-08-22T01:29:00.170Z"
+    },
+    {
+      "type": "click",
+      "selector": "#test-button",
+      "id": "aef02220-7b61-4a88-97bc-62c3f88274a1",
+      "timestamp": "2025-08-22T01:29:00.216Z"
+    }
+  ],
+  "isActive": false,
+  "metadata": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "startUrl": "file:///C:/Users/silok/Documents/chmcp/test-page.html",
+    "description": "A macro that types text and clicks a button"
+  },
+  "endTime": "2025-08-22T01:29:00.216Z"
+}

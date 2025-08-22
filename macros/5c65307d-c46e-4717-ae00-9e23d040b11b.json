@@ -1,0 +1,30 @@
+{
+  "id": "5c65307d-c46e-4717-ae00-9e23d040b11b",
+  "name": "Step Test Macro",
+  "sessionId": "session_1_1755826174434",
+  "startTime": "2025-08-22T01:29:34.470Z",
+  "actions": [
+    {
+      "type": "navigation",
+      "url": "file:///C:/Users/silok/Documents/chmcp/step-test-page.html#step1",
+      "id": "58918b13-4114-4c97-a3b2-4a4207ff10b5",
+      "timestamp": "2025-08-22T01:29:34.472Z"
+    },
+    {
+      "type": "navigation",
+      "url": "file://C:\\Users\\silok\\Documents\\chmcp\\step-test-page.html#step1",
+      "id": "1997643e-05c9-4878-b772-b9f8522c754f",
+      "timestamp": "2025-08-22T01:29:34.472Z"
+    }
+  ],
+  "isActive": false,
+  "metadata": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "startUrl": "file:///C:/Users/silok/Documents/chmcp/step-test-page.html"
+  },
+  "endTime": "2025-08-22T01:29:34.472Z"
+}
